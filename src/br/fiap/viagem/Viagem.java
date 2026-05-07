@@ -13,12 +13,32 @@ public class Viagem {
         this.carga = new Carga[20];
     }
 
-    public void pesquisar(){
+    public Carga pesquisar(int id){
+        int i = pesquisarId(id);
+        if (i != -1){
+            return carga [i];
+        }
+        return null;
+    }
+
+    public boolean cancelar (int id) {
+        int i = pesquisarId(id);
+        if (i != -1){
+            carga[i] = carga[index - 1];
+            index--;
+            return true;
+        }
+        return false;
 
     }
 
-    public void cancelar(){
-
+    private int pesquisarId(int id) {
+        for (int i = 0; i < index; i++) {
+            if (carga[i].getId() == id){
+                return i;
+            }
+        }
+        return -1;
     }
 
 

@@ -35,16 +35,24 @@ public class Util {
     }
 
     private void cancelar() {
-
+        int id = parseInt(showInputDialog("ID para busca"));
+        if (viagem.cancelar(id)){
+            showMessageDialog(null,"Carga Cancelada com sucesso!");
+        }
+else {
+    showMessageDialog(null,"Erro ao cancelar a carga!");
+        }
     }
 
     private void pesquisar() {
+        int id = parseInt(showInputDialog("ID para busca"));
+        Carga carga = viagem.pesquisar(id);
+        if (carga == null){
+            showMessageDialog(null,"Carga não encontrado");
+        } else {
+            showMessageDialog(null,carga.getDados());
+        }
 
-    }
-
-    private void pesquisarId() {
-        int id = parseInt(showInputDialog("ID para pesquisa"));
-        for(int i = 0; i < viagem.get; i++) {
     }
 
     private void exibir() {
